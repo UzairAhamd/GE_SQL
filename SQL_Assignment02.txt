@@ -1,0 +1,81 @@
+create database LibraryManagementSystem;
+
+create table Book(
+	book_id int not null primary key identity(1,1),
+	book_name varchar(50),
+	catagory varchar(50),
+	shelf_number int,
+	price int
+)
+select * from Book;
+
+create table User_I(
+	user_id int primary key identity(1,1),
+	user_name varchar(50)
+)
+select * from User_I;
+
+create table Book_Issue(
+	book_issue_no int not null primary key identity(1,1),
+	book_id int foreign key references Book(book_id),
+	user_id int foreign key references User_I(user_id),
+	issue_date date
+)
+select * from Book_Issue;
+
+insert into Book(book_name,catagory,shelf_number,price)
+values
+	('Book01','A01',1,200),
+	('Book02','B01',2,200),
+	('Book03','C01',3,200),
+	('Book04','D01',4,200),
+	('Book05','E01',5,200),
+	('Book06','F01',6,200),
+	('Book07','G01',7,200),
+	('Book08','H01',8,200),
+	('Book09','I01',9,200),
+	('Book10','J01',10,200),
+	('Book11','K01',11,200),
+	('Book12','L01',12,200),
+	('Book13','M01',13,200),
+	('Book14','N01',14,200),
+	('Book15','O01',15,200),
+	('Book16','P01',16,200),
+	('Book17','Q01',17,200),
+	('Book18','R01',18,200),
+	('Book19','S01',19,200),
+	('Book20','T01',20,200);
+
+select * from Book;
+
+insert into User_I(user_name)
+values
+	('User01'),
+	('User02'),
+	('User03'),
+	('User04'),
+	('User05'),
+	('User06'),
+	('User07'),
+	('User08'),
+	('User09'),
+	('User10');
+
+select * from User_I;
+
+insert into Book_Issue( book_id,user_id,issue_date)
+values
+	(1,1,'2022-10-01'),
+	(3,2,'2022-10-07'),
+	(5,3,'2022-10-12'),
+	(7,4,'2022-10-15'),
+	(9,5,'2022-10-18'),
+	(11,6,'2022-10-20'),
+	(13,7,'2022-10-22'),
+	(15,8,'2022-10-24'),
+	(17,9,'2022-10-27'),
+	(19,10,'2022-10-30');
+
+select * from Book_Issue;
+
+
